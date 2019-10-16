@@ -1,0 +1,136 @@
+body {
+  background: snow;
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+
+  .container {
+
+    h1 {
+      text-align: center;
+      color: #613e3e;
+    }
+
+    textarea {
+      display: block;
+      margin: 5vh auto 0;
+      width: 100%;
+      height: 30vh;
+      border: none;
+      border-bottom: 2px solid black;
+      padding: 15px 40px;
+      font-family: 'Roboto Slab',
+        serif;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: justify;
+      box-sizing: border-box;
+      background: transparent;
+      transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;
+
+      &:focus,
+      &:hover {
+        outline: none;
+        background: #faeaea;
+
+      }
+
+      &:focus {
+        border-bottom: 5px solid black;
+
+        height: 50vh;
+      }
+
+      &:disabled {
+        color: #979494;
+        background: #ececec;
+      }
+    }
+
+    .hint {
+      float: right;
+      margin: 5px;
+        color: #613e3e;
+        font-size: 12px;
+    }
+
+    .random {
+      margin: 5px;
+      line-height: 2;
+      cursor: pointer;
+      color: #613e3e;
+    }
+
+    button {
+      display: block;
+      background: transparent;
+      border: 5px solid #613e3e;
+      color: #613e3e;
+      margin: 15px auto;
+      font-size: 22px;
+      padding: 7px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: none;
+
+      &:focus,
+      &:hover {
+        outline: none;
+        background: #faeaea;
+      }
+
+      &:disabled {
+        color: #979494;
+        background: transparent;
+        border-color: #979494;
+        cursor: not-allowed;
+      }
+    }
+
+    h1 {
+      &.REAL {
+        font-size: 50px;
+        color: green;
+      }
+
+      &.FAKE {
+        font-size: 50px;
+        color: darkred;
+      }
+    }
+
+    .pipeline {
+      .show {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: 100;
+        cursor: pointer;
+      }
+
+      .output {
+        margin: 10px auto;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 32% 32% 32%;
+        column-gap: 2%;
+
+        transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s;
+        height: auto;
+        overflow: hidden;
+        opacity: 1;
+
+        &[hidden] {
+          height: 0;
+          opacity: 0;
+        }
+
+        div {
+          text-align: justify;
+
+          h2 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
