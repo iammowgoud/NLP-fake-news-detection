@@ -4,8 +4,8 @@ import pandas as pd
 from random import randrange
 
 
-app = Flask(__name__, static_folder="./webapp/static",
-            template_folder="./webapp")
+app = Flask(__name__, static_folder="./public/static",
+            template_folder="./public")
 
 
 @app.route("/")
