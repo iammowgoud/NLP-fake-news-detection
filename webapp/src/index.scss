@@ -49,8 +49,8 @@ body {
     .hint {
       float: right;
       margin: 5px;
-        color: #613e3e;
-        font-size: 12px;
+      color: #613e3e;
+      font-size: 12px;
     }
 
     .random {
@@ -58,9 +58,20 @@ body {
       line-height: 2;
       cursor: pointer;
       color: #613e3e;
+      background: none;
+      border: none;
+      font-family: 'Roboto Slab',
+        serif;
+      font-size: 16px;
+      outline: none;
+
+      &:disabled {
+        color: #979494;
+        pointer-events: none;
+      }
     }
 
-    button {
+    button.cta {
       display: block;
       background: transparent;
       border: 5px solid #613e3e;

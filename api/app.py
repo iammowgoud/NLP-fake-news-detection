@@ -1,15 +1,20 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from predictionModel import PredictionModel
 import pandas as pd
 from random import randrange
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="./webapp/static",
+            template_folder="./webapp")
 
+
+@app.route("/")
+def home():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    model = PredictionModel(request.form['text'])
+    model = PredictionModel(request.json)
     return jsonify(model.predict())
 
 

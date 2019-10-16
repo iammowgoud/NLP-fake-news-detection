@@ -9,7 +9,8 @@ export class Pipeline extends React.Component {
     if (this.props.prediction)
       return (
         <div className="pipeline">
-          <p className="show" onClick={this.toggle}>Show text processing pipeline <span role="img" aria-label="Show pipeline">⬇️</span></p>
+          <p className="show" onClick={this.toggle}>
+            {this.state.hidden ? 'Show' : 'Hide'} text processing pipeline <span role="img" aria-label="Show pipeline">⬇️</span></p>
 
           <div className="output" hidden={this.state.hidden}>
             <div>

@@ -33,14 +33,16 @@ class NLPInterface extends React.Component {
     if (count >= this.MIN_WORDS) return `You can write up to ${this.MAX_WORDS - count} more words`
   }
   predict = () => {
-    let reqBody = new FormData();
-    reqBody.append('text', this.state.text);
+    if (this.MAX_WORDS - this.state.text.split(/\s/).length < 0) return;
 
     this.setState({ loading: true, prediction: null });
 
     fetch("/predict", {
       method: 'POST',
-      reqBody
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.text)
     })
       .then(response => response.json())
       .then(({ original, pos_tagged, preprocessed, prediction }) => {
@@ -59,8 +61,8 @@ class NLPInterface extends React.Component {
 
         <span className="hint"> {this.state.wordsHint}</span>
 
-        <span className="random" onClick={this.random}> Load random News from test dataset ? Click here.</span>
-        <button disabled={this.state.loading} onClick={this.predict}> Predict </button>
+        <button disabled={this.state.loading} className="random" onClick={this.random}> Load random News from test dataset ? Click here.</button>
+        <button disabled={this.state.loading || this.MAX_WORDS - this.state.text.split(/\s/).length < 0} className="cta" onClick={this.predict}> Predict </button>
 
         {this.state.loading ? <h1>Classifying ...</h1> : ''}
 
