@@ -6,6 +6,7 @@
 # TODO: Enter your application id below. If you have signed up
 # using cloud.google.com/console use the "project id" for your application id.
 application: personal-projects-256123
+project: personal-projects-256123
 version: 1
 runtime: python37
 api_version: 1
