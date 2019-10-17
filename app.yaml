@@ -1,27 +1,13 @@
-# This file specifies your Python application's runtime configuration
-# including URL routing, versions, static file uploads, etc. See
-# https://developers.google.com/appengine/docs/python/config/appconfig
-# for details.
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT app:app
 
-# TODO: Enter your application id below. If you have signed up
-# using cloud.google.com/console use the "project id" for your application id.
-application: personal-projects-256123
-project: personal-projects-256123
-version: 1
-runtime: python37
-api_version: 1
-threadsafe: yes
+runtime_config:
+  python_version: 3
 
-# Handlers define how to route requests to your application.
-handlers:
-
-# App Engine serves and caches static files contained in the listed directories
-# (and subdirectories). Uncomment and set the directory as needed.
-# - url: "/public"
-#  static_dir: static
-
-# This handler tells app engine how to route requests to a WSGI application.
-# The script value is in the format <path.to.module>.<wsgi_application>
-# where <wsgi_application> is a WSGI application object.
-- url: .*  # This regex directs all routes to main.app
-  script: app.py
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 0.5
