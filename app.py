@@ -3,6 +3,7 @@ from predictionModel import PredictionModel
 import pandas as pd
 from random import randrange
 import pickle
+import nltk
 
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
@@ -28,6 +29,7 @@ def random():
 
 
 if __name__ == '__main__':
+    nltk.download('stopwords')
     with open("pickle/pipeline.pkl", 'rb') as f:
         pipeline = pickle.load(f)
     app.run()
