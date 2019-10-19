@@ -3,10 +3,11 @@ from predictionModel import PredictionModel
 import pandas as pd
 from random import randrange
 import pickle
-# from joblib import load
 
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
+
+pipeline = 0
 
 @app.route("/")
 def home():
@@ -29,5 +30,4 @@ def random():
 if __name__ == '__main__':
     with open("pickle/pipeline.pkl", 'rb') as f:
         pipeline = pickle.load(f)
-    # pipeline = load('jupyter_project/pipeline.joblib')
     app.run()

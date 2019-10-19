@@ -22,7 +22,11 @@ class NLPInterface extends React.Component {
   random = () => fetch("/random")
     .then(response => response.json())
     .then(article => article.title + '\n\n' + article.text)
-    .then(text => this.setState({ text, wordsHint: this.getWordsHint(text) }))
+    .then(text => this.setState({
+      text, wordsHint: this.getWordsHint(text), prediction: null,
+      original: null,
+      pos_tagged: null,
+      preprocessed: null }))
     .catch(error => this.setState({ error: true }));
 
   updateInput = ({ target: { value } }) => this.setState({ text: value, prediction: null, wordsHint: this.getWordsHint(value) });

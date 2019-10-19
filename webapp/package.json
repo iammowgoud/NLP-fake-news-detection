@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "rm -r ../public",
     "build": "react-scripts build",
     "postbuild": "mv build/ ../public",
     "test": "react-scripts test",

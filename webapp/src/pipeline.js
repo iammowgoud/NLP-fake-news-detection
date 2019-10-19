@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export class Pipeline extends React.Component {
-
   state = { hidden: true }
-  toggle = () => this.setState(prevState => ({ hidden: !prevState.hidden }));
+  toggle = () => {
+    this.setState(prevState => ({ hidden: !prevState.hidden }))
+  };
 
   // highlight = (posTagged) => {
   //   return posTagged.split(/\s/)
@@ -17,7 +18,6 @@ export class Pipeline extends React.Component {
   //       }
   //     })
   // }
-
 render() {
   if (this.props.prediction)
     return (
