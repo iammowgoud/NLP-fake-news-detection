@@ -8,12 +8,6 @@ import pickle
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
 
-with open("pickle/pipeline.pkl", 'rb') as f:
-    pipeline = pickle.load(f)
-
-
-# pipeline = load('jupyter_project/pipeline.joblib')
-
 @app.route("/")
 def home():
     return render_template('index.html')
@@ -33,4 +27,7 @@ def random():
 
 
 if __name__ == '__main__':
+    with open("pickle/pipeline.pkl", 'rb') as f:
+        pipeline = pickle.load(f)
+    # pipeline = load('jupyter_project/pipeline.joblib')
     app.run()
