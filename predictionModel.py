@@ -1,6 +1,7 @@
 # preprocessing
 import string
 import nltk
+nltk.data.path.append('./nltk_data')
 from nltk.corpus import stopwords
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
