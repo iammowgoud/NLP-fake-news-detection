@@ -33,7 +33,6 @@ class PredictionModel:
         return self.output
 
     # Helper methods
-
     def preprocess(self):
         # lowercase the text
         text = self.output['original'].lower()

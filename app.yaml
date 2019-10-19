@@ -1,6 +1,5 @@
-runtime: python
+runtime: python37
 instance_class: F4
-env: flex
 entrypoint: gunicorn -b :$PORT app:app
 
 liveness_check:
