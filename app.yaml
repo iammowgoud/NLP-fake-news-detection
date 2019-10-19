@@ -13,7 +13,7 @@ handlers:
 runtime_config:
   python_version: 3
 
-instance_class: F2
+instance_class: F4
 automatic_scaling:
   target_cpu_utilization: 0.65
   min_instances: 1
