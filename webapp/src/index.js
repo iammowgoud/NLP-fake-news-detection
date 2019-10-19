@@ -4,8 +4,8 @@ import { Pipeline } from './pipeline'
 import './index.scss';
 class NLPInterface extends React.Component {
 
-  MIN_WORDS = 100;
-  MAX_WORDS = 2000;
+  MIN_WORDS = 25;
+  MAX_WORDS = 2500;
 
   state = {
     text: '',
@@ -66,7 +66,10 @@ class NLPInterface extends React.Component {
         <span className="hint"> {this.state.wordsHint}</span>
 
         <button disabled={this.state.loading} className="random" onClick={this.random}> Load random News from test dataset ? Click here.</button>
-        <button disabled={this.state.loading || this.MAX_WORDS - this.state.text.split(/\s/).length < 0} className="cta" onClick={this.predict}> Predict </button>
+        <button disabled={
+          this.state.loading ||
+          this.MIN_WORDS - this.state.text.split(/\s/).length > 0 ||
+          this.MAX_WORDS - this.state.text.split(/\s/).length < 0} className="cta" onClick={this.predict}> Predict </button>
 
         {this.state.loading ? <h1>Classifying ...</h1> : ''}
 
