@@ -4,7 +4,6 @@ env: flex
 entrypoint: gunicorn -b :$PORT app:app
 
 readiness_check:
-  timeout_sec: 300
   app_start_timeout_sec: 300
 
 handlers:
