@@ -3,8 +3,10 @@ instance_class: F4
 env: flex
 entrypoint: gunicorn -b :$PORT app:app
 
-readiness_check:
+liveness_check:
   initial_delay_sec: 3600
+
+readiness_check:
   app_start_timeout_sec: 1800
 
 handlers:
