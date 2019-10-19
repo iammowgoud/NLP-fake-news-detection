@@ -2,11 +2,17 @@ from flask import Flask, jsonify, request, render_template
 from predictionModel import PredictionModel
 import pandas as pd
 from random import randrange
-
+import pickle
+# from joblib import load
 
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
 
+with open("pickle/pipeline.pkl", 'rb') as f:
+    pipeline = pickle.load(f)
+
+
+# pipeline = load('jupyter_project/pipeline.joblib')
 
 @app.route("/")
 def home():
@@ -14,7 +20,8 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    model = PredictionModel(request.json)
+    global pipeline
+    model = PredictionModel(pipeline, request.json)
     return jsonify(model.predict())
 
 

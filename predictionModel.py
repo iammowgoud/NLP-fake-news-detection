@@ -1,5 +1,3 @@
-import pickle
-
 # preprocessing
 import string
 import nltk
@@ -12,13 +10,11 @@ from nltk.corpus import wordnet
 class PredictionModel:
 
     output = {}
-    pipeline_path = 'pickle/pipeline.pkl'
 
     # Initializer
-    def __init__(self, text):
+    def __init__(self, pipeline, text):
         self.output['original'] = text
-        with open(self.pipeline_path, 'rb') as f:
-            self.pipeline = pickle.load(f)
+        self.pipeline = pipeline
 
     # instance method
     def predict(self):
