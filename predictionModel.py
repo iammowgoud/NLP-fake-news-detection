@@ -10,12 +10,12 @@ from nltk.corpus import wordnet
 
 class PredictionModel:
 
+    pipeline = {}
     output = {}
 
     # Initializer
-    def __init__(self, pipeline, text):
+    def __init__(self, text):
         self.output['original'] = text
-        self.pipeline = pipeline
 
     # instance method
     def predict(self):
@@ -27,7 +27,8 @@ class PredictionModel:
         clean_and_pos_tagged_text = self.output['preprocessed'] + \
             ' ' + self.output['pos_tagged']
 
-        self.output['prediction'] = 'FAKE' if self.pipeline.predict([clean_and_pos_tagged_text])[0] == 0 else 'REAL'
+        self.output['prediction'] = 'FAKE' if PredictionModel.pipeline.predict(
+            [clean_and_pos_tagged_text])[0] == 0 else 'REAL'
 
         return self.output
 

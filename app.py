@@ -8,16 +8,13 @@ import nltk
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
 
-pipeline = 0
-
 @app.route("/")
 def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    global pipeline
-    model = PredictionModel(pipeline, request.json)
+    model = PredictionModel(request.json)
     return jsonify(model.predict())
 
 
@@ -30,5 +27,5 @@ def random():
 
 if __name__ == '__main__':
     with open("pickle/pipeline.pkl", 'rb') as f:
-        pipeline = pickle.load(f)
+        PredictionModel.pipeline = pickle.load(f)
     app.run()
