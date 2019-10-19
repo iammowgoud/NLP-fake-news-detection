@@ -1,4 +1,4 @@
-runtime: python37
+runtime: python
 instance_class: F4
 env: flex
 entrypoint: gunicorn -b :$PORT app:app
