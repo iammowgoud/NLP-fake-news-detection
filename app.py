@@ -5,8 +5,12 @@ from random import randrange
 import pickle
 import nltk
 
+with open("pickle/pipeline.pkl", 'rb') as f:
+        PredictionModel.pipeline = pickle.load(f)
+
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
+
 
 @app.route("/")
 def home():
@@ -26,6 +30,4 @@ def random():
 
 
 if __name__ == '__main__':
-    with open("pickle/pipeline.pkl", 'rb') as f:
-        PredictionModel.pipeline = pickle.load(f)
     app.run()
