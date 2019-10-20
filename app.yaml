@@ -1,13 +1,13 @@
 runtime: python
 instance_class: F4
 env: flex
-entrypoint: gunicorn -t 220 -b :$PORT app:app -k eventlet
+entrypoint: gunicorn -t 60 -b :$PORT app:app
 
 liveness_check:
-  initial_delay_sec: 400
+  initial_delay_sec: 500
 
 readiness_check:
-  app_start_timeout_sec: 400
+  app_start_timeout_sec: 500
 
 handlers:
 - url: /public

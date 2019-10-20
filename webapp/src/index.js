@@ -5,7 +5,7 @@ import './index.scss';
 class NLPInterface extends React.Component {
 
   MIN_WORDS = 25;
-  MAX_WORDS = 2500;
+  MAX_WORDS = 3500;
 
   state = {
     text: '',
