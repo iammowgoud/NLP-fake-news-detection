@@ -1,7 +1,7 @@
 runtime: python
 instance_class: F4
 env: flex
-entrypoint: gunicorn -b :$PORT app:app --timeout 60
+entrypoint: gunicorn -t 120 -b :$PORT app:app
 
 liveness_check:
   initial_delay_sec: 400
