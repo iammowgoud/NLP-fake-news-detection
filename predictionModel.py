@@ -1,20 +1,21 @@
 # preprocessing
+from nltk.corpus import wordnet
+import pickle
 import string
 import nltk
 nltk.data.path.append('./nltk_data')
 from nltk.corpus import stopwords
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import wordnet
 
+with open("pickle/pipeline.pkl", 'rb') as f:
+        pipeline = pickle.load(f)
 
 class PredictionModel:
-
     output = {}
 
     # Initializer
-    def __init__(self, pipeline, text):
-        self.pipeline = pipeline
+    def __init__(self, text):
         self.output['original'] = text
 
     # instance method
@@ -27,7 +28,7 @@ class PredictionModel:
         clean_and_pos_tagged_text = self.output['preprocessed'] + \
             ' ' + self.output['pos_tagged']
 
-        self.output['prediction'] = 'FAKE' if self.pipeline.predict(
+        self.output['prediction'] = 'FAKE' if pipeline.predict(
             [clean_and_pos_tagged_text])[0] == 0 else 'REAL'
 
         return self.output
