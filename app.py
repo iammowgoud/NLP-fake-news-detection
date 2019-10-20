@@ -5,20 +5,17 @@ from random import randrange
 import pickle
 import nltk
 
-with open("pickle/pipeline.pkl", 'rb') as f:
-        PredictionModel.pipeline = pickle.load(f)
-
 app = Flask(__name__, static_folder="./public/static",
             template_folder="./public")
-
 
 @app.route("/")
 def home():
     return render_template('index.html')
 
+
 @app.route('/predict', methods=['POST'])
 def predict():
-    model = PredictionModel(request.json)
+    model = PredictionModel(app.pipeline, request.json)
     return jsonify(model.predict())
 
 
@@ -29,5 +26,11 @@ def random():
     return jsonify({'title': data.loc[index].title, 'text': data.loc[index].text})
 
 
+def home():
+    return render_template('index.html')
+
+
 if __name__ == '__main__':
+    with open("pickle/pipeline.pkl", 'rb') as f:
+        app.pipeline = pickle.load(f)
     app.run()
