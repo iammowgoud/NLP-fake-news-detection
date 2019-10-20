@@ -1,7 +1,7 @@
 runtime: python
 instance_class: F4
 env: flex
-entrypoint: gunicorn -t 120 -b :$PORT app:app
+entrypoint: gunicorn -t 120 -b :$PORT app:app -worker-class eventlet --workers 3 
 
 liveness_check:
   initial_delay_sec: 500
