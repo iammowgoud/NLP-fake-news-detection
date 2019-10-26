@@ -59,7 +59,7 @@ class NLPInterface extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>NLP Fake News Detector Classifier</h1>
+        <h1>NLP Fake News Classifier</h1>
         <textarea autoFocus disabled={this.state.loading} value={this.state.text} onChange={this.updateInput}>
         </textarea>
 
