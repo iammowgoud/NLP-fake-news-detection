@@ -1,3 +1,4 @@
+setuptools==41.4.0
 nltk==3.4.5
 Flask==1.0.2
 pandas==0.23.4
