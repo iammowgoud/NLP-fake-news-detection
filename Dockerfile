@@ -1,4 +1,4 @@
-FROM python:buster
+FROM python:3
 
 LABEL image for a NLP app
 
