@@ -1,4 +1,4 @@
-FROM python:3.6.8-alpine
+FROM python
 
 LABEL image for a NLP app
 
