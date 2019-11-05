@@ -1,19 +1,8 @@
-runtime: python
-instance_class: F4
-env: flex
-entrypoint: gunicorn -t 120 -b :$PORT app:app --worker-class eventlet --workers 3 
-
-liveness_check:
-  initial_delay_sec: 500
-
-readiness_check:
-  app_start_timeout_sec: 500
-
-handlers:
-- url: /public
-  static_dir: public
-
-runtime_config:
-  python_version: 3
-
-
+# cloudbuild.yaml
+steps:
+  # build & push the container image
+- name: "gcr.io/kaniko-project/executor:latest"
+  args: ["--cache=true", "--cache-ttl=48h", "--destination=gcr.io/$PROJECT_ID/fakenewsservice:latest"]
+  # Deploy container image to Cloud Run
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ['beta', 'run', 'deploy', 'todo', '--image', 'gcr.io/$PROJECT_ID/fakenewsservice:latest', '--region', 'us-central1', '--allow-unauthenticated', '--platform', 'managed']
