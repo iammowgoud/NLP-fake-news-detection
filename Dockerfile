@@ -1,10 +1,14 @@
-FROM python:3.7-stretch
+FROM python:3
+
 RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
+
 COPY . /app
 WORKDIR /app
+
 RUN python -m pip install --upgrade pip
+
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
+
 # CMD ["app.py"]
 CMD gunicorn -t 120 -b :$PORT app:app --worker-class eventlet --workers 3
