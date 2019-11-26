@@ -14,7 +14,7 @@ start = timeit.default_timer()
 with open("pickle/pipeline.pkl", 'rb') as f:
         pipeline = pickle.load(f)
         stop = timeit.default_timer()
-        print('Time: ', stop - start)
+        print('=> Pickle Loaded in: ', stop - start)
 
 class PredictionModel:
     output = {}
