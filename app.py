@@ -24,8 +24,10 @@ def random():
     return jsonify({'title': data.loc[index].title, 'text': data.loc[index].text})
 
 
-def home():
-    return render_template('index.html')
+@app.route("/notebook")
+def notebook():
+    return render_template('Notebook.html')
+
 
 # Only for local running
 if __name__ == '__main__':
