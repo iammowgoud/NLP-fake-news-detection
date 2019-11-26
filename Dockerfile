@@ -10,5 +10,4 @@ RUN python -m pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-# CMD ["app.py"]
 CMD gunicorn -t 120 -b :$PORT app:app
