@@ -15,7 +15,8 @@ class NLPInterface extends React.Component {
     prediction: null,
     original: null,
     pos_tagged: null,
-    preprocessed: null
+    preprocessed: null,
+    emoji: true
   }
 
 
@@ -26,8 +27,10 @@ class NLPInterface extends React.Component {
       text, wordsHint: this.getWordsHint(text), prediction: null,
       original: null,
       pos_tagged: null,
-      preprocessed: null }))
-    .catch(error => this.setState({ error: true }));
+      preprocessed: null,
+      emoji: false
+    }))
+    .catch(error => this.setState({ error: true, emoji: false }));
 
   updateInput = ({ target: { value } }) => this.setState({ text: value, prediction: null, wordsHint: this.getWordsHint(value) });
 
@@ -65,7 +68,12 @@ class NLPInterface extends React.Component {
 
         <span className="hint"> {this.state.wordsHint}</span>
 
-        <button disabled={this.state.loading} className="random" onClick={this.random}> Load random News from test dataset ? Click here.</button>
+        <button disabled={this.state.loading} className="random" onClick={this.random}>
+          Load random News from test dataset ? <span>Click here</span>.
+          <span role="img" className="emoji bounce">
+            {this.state.emoji ? "👆🏼" : ""}
+          </span>
+        </button>
         <button disabled={
           this.state.loading ||
           this.MIN_WORDS - this.state.text.split(/\s/).length > 0 ||

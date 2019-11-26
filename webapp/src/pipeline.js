@@ -1,23 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
 export class Pipeline extends React.Component {
   state = { hidden: true }
   toggle = () => {
     this.setState(prevState => ({ hidden: !prevState.hidden }))
   };
 
-  // highlight = (posTagged) => {
-  //   return posTagged.split(/\s/)
-  //     .map(word => {
-  //       let posTag = word.match(/([A-Z]+-)(.*)/);
-  //       if (posTag) {
-  //         return (<span>posTag[1]</span>) + posTag[2];
-  //       } else {
-  //         return word;
-  //       }
-  //     })
-  // }
 render() {
   if (this.props.prediction)
     return (

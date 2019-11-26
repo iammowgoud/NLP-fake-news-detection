@@ -17,7 +17,7 @@ body {
       height: 30vh;
       border: none;
       border-bottom: 2px solid black;
-      padding: 15px 40px;
+      padding: 15px 20px;
       font-family: 'Roboto Slab',
         serif;
       font-size: 16px;
@@ -64,10 +64,25 @@ body {
         serif;
       font-size: 16px;
       outline: none;
-
+position: relative;
       &:disabled {
         color: #979494;
         pointer-events: none;
+      }
+
+      span {
+        color: #c91616;
+        text-decoration: underline;
+        font-weight: 800;
+      }
+
+      .emoji {
+        top:25px;
+        right: 30px;
+        font-style: normal;
+        text-decoration: none;
+        font-size: 35px;
+        position: absolute;
       }
     }
 
@@ -144,4 +159,47 @@ body {
       }
     }
   }
+}
+
+
+@-webkit-keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-30px)
+  }
+
+  60% {
+    -webkit-transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-12px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+
+.bounce {
+  animation: bounce 1s infinite;
 }
