@@ -1,14 +1,13 @@
 # preprocessing
+import timeit
+from nltk.stem import WordNetLemmatizer
+from nltk import pos_tag
+from nltk.corpus import stopwords
 from nltk.corpus import wordnet
-# import pickle
 import _pickle as pickle
 import string
 import nltk
 nltk.data.path.append('./nltk_data')
-from nltk.corpus import stopwords
-from nltk import pos_tag
-from nltk.stem import WordNetLemmatizer
-import timeit
 
 start = timeit.default_timer()
 with open("pickle/pipeline.pkl", 'rb') as f:
@@ -16,14 +15,14 @@ with open("pickle/pipeline.pkl", 'rb') as f:
         stop = timeit.default_timer()
         print('=> Pickle Loaded in: ', stop - start)
 
+
 class PredictionModel:
     output = {}
 
-    # Initializer
+    # constructor
     def __init__(self, text):
         self.output['original'] = text
 
-    # instance method
     def predict(self):
 
         self.preprocess()
